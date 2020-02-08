@@ -1,6 +1,8 @@
 require("pry-byebug")
 require_relative("../models/merchant")
 
+Merchant.delete_all()
+
 merchant1 = Merchant.new({
   "name" => "Asda"
   })

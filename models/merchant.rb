@@ -19,4 +19,26 @@ class Merchant
     @id = result[0]["id"].to_i()
   end
 
+  def update()
+    sql = "UPDATE merchants
+    SET name = $1
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM merchants"
+    results = SqlRunner.run(sql)
+    merchants = results.map {|merchant| Merchant.new(merchant)}
+    return merchants
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM merchants"
+    SqlRunner.run(sql)
+  end
+
+
+
 end
