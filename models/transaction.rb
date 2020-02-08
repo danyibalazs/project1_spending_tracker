@@ -35,6 +35,16 @@ class Transaction
     SqlRunner.run(sql, value)
   end
 
+  def merchant()
+    merchant = Merchant.find(merchant_id)
+    return merchant
+  end
+
+  def tag()
+    tag = Tag.find(tag_id)
+    return tag
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)

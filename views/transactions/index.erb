@@ -1,0 +1,8 @@
+
+<% @transactions.each do |transaction| %>
+  <ul>
+    <li><%= transaction.amount %></li>
+    <li><%= transaction.merchant.name %></li>
+    <li><%= transaction.tag.name %></li>
+  </ul>
+<% end %>
