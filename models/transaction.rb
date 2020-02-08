@@ -55,4 +55,12 @@ class Transaction
     SqlRunner.run(sql)
   end
 
+  def self.total_amounts(transactions_array)
+    total = 0
+    transactions_array.each do |transaction|
+      total += transaction.amount
+    end
+    return total
+  end
+
 end
