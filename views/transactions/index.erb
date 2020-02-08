@@ -5,4 +5,7 @@
     <li><%= transaction.merchant.name %></li>
     <li><%= transaction.tag.name %></li>
   </ul>
+
 <% end %>
+
+<p> Total: <%= Transaction.total_amounts(@transactions) %></p>
