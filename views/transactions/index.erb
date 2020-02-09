@@ -1,8 +1,10 @@
 <% @transactions.each do |transaction| %>
   <ul>
-    <li><%= transaction.amount %></li>
-    <li><%= transaction.merchant.name.capitalize %></li>
-    <li><%= transaction.tag.name.capitalize %></li>
+    <a href="/transactions/<%= transaction.id %>">
+      <li><%= transaction.amount %></li>
+      <li><%= transaction.merchant.name.capitalize %></li>
+      <li><%= transaction.tag.name.capitalize %></li>
+    </a>
   </ul>
 
 <% end %>

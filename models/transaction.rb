@@ -58,7 +58,7 @@ class Transaction
     sql = "SELECT * FROM transactions WHERE id = $1"
     value = [id]
     result = SqlRunner.run(sql, value)
-    transaction = Tag.new(result[0])
+    transaction = Transaction.new(result[0])
     return transaction
   end
 
