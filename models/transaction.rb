@@ -54,7 +54,15 @@ class Transaction
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
     return transactions
+  end
 
+  def self.filter_by_tag(tag_id)
+    sql = "SELECT * FROM transactions
+    WHERE tag_id = $1"
+    value = [tag_id]
+    results = SqlRunner.run(sql, value)
+    transactions = results.map {|transaction| Transaction.new(transaction)}
+    return transactions
   end
 
   def self.all()

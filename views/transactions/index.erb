@@ -3,7 +3,20 @@
   Filter by merchant:
     <select name="merchant_id">
       <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <input type='submit' value="Filter">
+</form>
+
+<form action="/transactions/tag" method="post">
+  <label>
+  Filter by tag:
+    <select name="tag_id">
+      <% for tag in @tags %>
+      <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
       <% end %>
     </select>
   </label>

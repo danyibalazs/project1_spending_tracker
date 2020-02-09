@@ -23,6 +23,15 @@ post '/transactions/merchant' do
   erb ( :"transactions/index" )
 end
 
+post '/transactions/tag' do
+  @transactions = Transaction.filter_by_tag(params["tag_id"])
+  @transactions.reverse!
+  @total = Transaction.total_amounts(@transactions)
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb ( :"transactions/index" )
+end
+
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
