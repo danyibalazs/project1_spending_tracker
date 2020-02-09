@@ -4,7 +4,7 @@ require_relative( './tag' )
 
 class Transaction
 
-  attr_reader :id
+  attr_reader :id, :day, :month
   attr_accessor :merchant_id, :tag_id, :amount
 
   def initialize(options)
@@ -12,13 +12,15 @@ class Transaction
     @merchant_id = options["merchant_id"].to_i()
     @tag_id = options["tag_id"].to_i()
     @amount = options["amount"].to_f()
+    @day = Time.now.strftime("%d")
+    @month = Time.now.strftime("%m")
   end
 
   def save()
     sql = "INSERT INTO transactions
-    (merchant_id, tag_id, amount) VALUES ($1, $2, $3)
+    (merchant_id, tag_id, amount, day, month) VALUES ($1, $2, $3, $4, $5)
     RETURNING id"
-    value = [@merchant_id, @tag_id, @amount]
+    value = [@merchant_id, @tag_id, @amount, @day, @month]
     result = SqlRunner.run(sql, value)
     @id = result[0]["id"].to_i()
   end

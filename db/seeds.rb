@@ -48,5 +48,9 @@ transaction3 = Transaction.new({
   })
 transaction3.save()
 
+day = Time.now.strftime("%d")
+month = Time.now.strftime("%m")
+
+
 binding.pry
 nil
