@@ -13,6 +13,9 @@ get '/transactions' do
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
+  user = User.all()
+  @budget =  user[0].budget
+  @remaining_money = @budget - @total
   erb ( :"transactions/index" )
 end
 

@@ -6,7 +6,7 @@ class User
   def initialize(options)
     @id = options["id"] if options["id"]
     @name = options["name"]
-    @budget = options["budget"]
+    @budget = options["budget"].to_i()
   end
 
   def save()
