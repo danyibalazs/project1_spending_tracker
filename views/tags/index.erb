@@ -1,6 +1,6 @@
 <% @tags.each do |tag| %>
   <ul>
-    <li><%= tag.name %></li>
+    <li><a href="/tags/<%= tag.id  %>"><%= tag.name %></a></li>
   </ul>
 <% end %>
 

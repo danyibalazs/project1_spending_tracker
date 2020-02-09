@@ -1,0 +1,7 @@
+<h1> <%= @tag.name %> </h1>
+
+<form action="/tags/<%= @tag.id  %>/delete" method="post">
+    <input type='submit' value="Delete">
+</form>
+
+<a href="/tags/<%= @tag.id %>/edit">Rename</a>
