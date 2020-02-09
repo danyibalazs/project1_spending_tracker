@@ -1,1 +1,18 @@
-<h1>Spending Tracker</h1>
+<% if @users == [] %>
+<form action="/" method="post">
+  <label>
+  User name:
+    <input type="text" name="name" value="">
+  </label>
+
+<label>
+  Budget:
+    <input type="number" name="budget" value="">
+  </label>
+
+  <input type='submit' value="New user">
+</form>
+<% else %>
+<h1>Welcome <%= @users[0].name %>!</h1>
+<h1>Your budget is £<%= @users[0].budget %>!</h1>
+<% end %>
