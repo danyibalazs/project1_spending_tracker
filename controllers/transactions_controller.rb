@@ -7,6 +7,7 @@ also_reload( '../models/*' )
 
 get '/transactions' do
   @transactions = Transaction.all()
+  @transactions.sort_by!{|hash| hash.month}
   @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
@@ -15,6 +16,7 @@ get '/transactions' do
 end
 
 post '/transactions/merchant' do
+  @filter = Merchant.find(params["merchant_id"]).name()
   @transactions = Transaction.filter_by_merchant(params["merchant_id"])
   @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)

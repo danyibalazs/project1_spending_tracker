@@ -63,6 +63,14 @@ future_transaction = Transaction.new({
   "month" => "03"
   })
 future_transaction.save()
+future_transaction2 = Transaction.new({
+  "merchant_id" => merchant2.id,
+  "tag_id" => tag2.id,
+  "amount" => 2000,
+  "day" => "20",
+  "month" => "05"
+  })
+future_transaction2.save()
 
 
 binding.pry
