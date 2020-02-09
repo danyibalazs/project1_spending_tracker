@@ -4,16 +4,16 @@ require_relative( './tag' )
 
 class Transaction
 
-  attr_reader :id, :day, :month
-  attr_accessor :merchant_id, :tag_id, :amount
+  attr_reader :id
+  attr_accessor :merchant_id, :tag_id, :amount, :day, :month
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @merchant_id = options["merchant_id"].to_i()
     @tag_id = options["tag_id"].to_i()
     @amount = options["amount"].to_f()
-    @day =  Time.now.strftime("%d")
-    @month = Time.now.strftime("%m")
+    @day =  options["day"] #Time.now.strftime("%d")
+    @month = options["month"] #Time.now.strftime("%m")
   end
 
   def save()
@@ -27,9 +27,9 @@ class Transaction
 
   def update()
     sql = "UPDATE transactions
-    SET (merchant_id, tag_id, amount) = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@merchant_id, @tag_id, @amount, @id]
+    SET (merchant_id, tag_id, amount, day, month) = ($1, $2, $3, $4, $5)
+    WHERE id = $6"
+    values = [@merchant_id, @tag_id, @amount, @day, @month, @id]
     SqlRunner.run(sql, values)
   end
 

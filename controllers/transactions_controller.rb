@@ -48,6 +48,8 @@ get '/transactions/new' do
 end
 
 post '/transactions' do
+  params["day"] = Time.now.strftime("%d")
+  params["month"] = Time.now.strftime("%m")
   transaction = Transaction.new(params)
   transaction.save
   redirect("/transactions")
@@ -72,6 +74,8 @@ get '/transactions/:id/edit' do
 end
 
 post '/transactions/:id' do
+  params["day"] = Time.now.strftime("%d")
+  params["month"] = Time.now.strftime("%m")
   transaction = Transaction.new(params)
   transaction.update()
   redirect("/transactions")
