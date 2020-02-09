@@ -27,6 +27,23 @@
   <input type='submit' value="Filter">
 </form>
 
+<form action="/transactions/month" method="post">
+  <label>
+  Filter by month:
+
+  <select name="month" required>
+
+    <option style="display:none">
+    <option value="02">February</option>
+    <option value="03">March</option>
+
+  </select>
+  <!-- <input type="text" name="month"> -->
+  </label>
+
+  <input type='submit' value="Filter">
+</form>
+
 <% @transactions.each do |transaction| %>
   <ul>
     <a href="/transactions/<%= transaction.id %>">

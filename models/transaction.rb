@@ -12,7 +12,7 @@ class Transaction
     @merchant_id = options["merchant_id"].to_i()
     @tag_id = options["tag_id"].to_i()
     @amount = options["amount"].to_f()
-    @day = Time.now.strftime("%d")
+    @day =  Time.now.strftime("%d")
     @month = Time.now.strftime("%m")
   end
 
@@ -62,6 +62,15 @@ class Transaction
     sql = "SELECT * FROM transactions
     WHERE tag_id = $1"
     value = [tag_id]
+    results = SqlRunner.run(sql, value)
+    transactions = results.map {|transaction| Transaction.new(transaction)}
+    return transactions
+  end
+
+  def self.filter_by_month(month)
+    sql = "SELECT * FROM transactions
+    WHERE month = $1"
+    value = [month]
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
     return transactions
