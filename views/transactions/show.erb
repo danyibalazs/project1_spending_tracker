@@ -1,3 +1,9 @@
 <li><%= @transaction.amount %></li>
 <li><%= @transaction.merchant.name.capitalize %></li>
 <li><%= @transaction.tag.name.capitalize %></li>
+
+<form action="/transactions/<%= @transaction.id  %>/delete" method="post">
+    <input type='submit' value="Delete">
+</form>
+
+<a href="/transactions/<%= @transaction.id %>/edit">Edit</a>
