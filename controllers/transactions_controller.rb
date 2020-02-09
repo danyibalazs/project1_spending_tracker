@@ -9,6 +9,17 @@ get '/transactions' do
   @transactions = Transaction.all()
   @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb ( :"transactions/index" )
+end
+
+post '/transactions/merchant' do
+  @transactions = Transaction.filter_by_merchant(params["merchant_id"])
+  @transactions.reverse!
+  @total = Transaction.total_amounts(@transactions)
+  @merchants = Merchant.all
+  @tags = Tag.all
   erb ( :"transactions/index" )
 end
 

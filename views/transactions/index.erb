@@ -1,3 +1,16 @@
+<form action="/transactions/merchant" method="post">
+  <label>
+  Filter by merchant:
+    <select name="merchant_id">
+      <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <input type='submit' value="Filter">
+</form>
+
 <% @transactions.each do |transaction| %>
   <ul>
     <a href="/transactions/<%= transaction.id %>">

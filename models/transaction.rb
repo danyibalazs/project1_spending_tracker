@@ -47,6 +47,16 @@ class Transaction
     return tag
   end
 
+  def self.filter_by_merchant(merchant_id)
+    sql = "SELECT * FROM transactions
+    WHERE merchant_id = $1"
+    value = [merchant_id]
+    results = SqlRunner.run(sql, value)
+    transactions = results.map {|transaction| Transaction.new(transaction)}
+    return transactions
+
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
