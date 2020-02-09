@@ -1,6 +1,6 @@
 <% @merchants.each do |merchant| %>
   <ul>
-    <li><%= merchant.name %></li>
+    <li><a href="/merchants/<%= merchant.id  %>"><%= merchant.name %></a></li>
   </ul>
 <% end %>
 

@@ -17,3 +17,8 @@ post '/merchants' do
   merchant.save()
   redirect to("/merchants")
 end
+
+get '/merchants/:id' do
+  @merchant = Merchant.find(params["id"].to_i)
+  erb (:"merchants/show")
+end
