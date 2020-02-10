@@ -1,0 +1,35 @@
+.index p {
+  background-color: #f1f1f1;
+  padding: 14px 14px;
+  margin: 0;
+  position: sticky;
+  top: 46.667px;
+  font-weight: bold;
+}
+.index a {
+  text-decoration: none;
+}
+
+/* unvisited link */
+.index a:link {
+  color: black;
+}
+
+/* visited link */
+.index a:visited {
+  color: black;
+}
+
+/* mouse over link */
+.index a:hover {
+  color: grey;
+}
+
+/* selected link */
+.index a:active {
+  color: black;
+}
+
+.index ul {
+  list-style-type: none
+}

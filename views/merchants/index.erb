@@ -1,9 +1,12 @@
+<div class="index">
+
+
+<p>
+  <a href="/merchants/new">New merchant</a>
+</p>
 <% @merchants.each do |merchant| %>
   <ul>
     <li><a href="/merchants/<%= merchant.id  %>"><%= merchant.name %></a></li>
   </ul>
 <% end %>
-
-<p>
-  <a href="/merchants/new">New merchant</a>
-</p>
+</div>
