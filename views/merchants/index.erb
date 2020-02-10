@@ -11,7 +11,7 @@
 <ul>
 <% @merchants.each do |merchant| %>
 
-    <li><a href="/merchants/<%= merchant.id  %>"><%= merchant.name %></a></li>
+    <li><a href="/merchants/<%= merchant.id  %>"><%= merchant.name.capitalize %></a></li>
 
 <% end %>
 </ul>
