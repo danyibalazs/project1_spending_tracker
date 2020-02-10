@@ -1,7 +1,15 @@
-<h1> <%= @merchant.name %> </h1>
+<div class="index">
+ <p>
+  <a class="edit" href="/merchants/<%= @merchant.id %>/edit">Rename</a>
+  </p>
+
+</div>
+
+
+  <h1><%= @merchant.name %></h1>
 
 <form action="/merchants/<%= @merchant.id  %>/delete" method="post">
-    <input type='submit' value="Delete">
+    <input class="delete" type='submit' value="Delete">
 </form>
 
-<a href="/merchants/<%= @merchant.id %>/edit">Rename</a>
+ <p>Warning! This will delete all the transactions with <%= @merchant.name %> attached to it!</p>

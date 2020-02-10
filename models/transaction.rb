@@ -12,6 +12,7 @@ class Transaction
     @merchant_id = options["merchant_id"].to_i()
     @tag_id = options["tag_id"].to_i()
     @amount = options["amount"].to_f()
+    @transaction_date = options["transaction_date"]
     @day =  options["day"] #Time.now.strftime("%d")
     @month = options["month"] #Time.now.strftime("%m")
   end
@@ -98,6 +99,7 @@ class Transaction
 
   def self.total_amounts(transactions_array)
     total = 0
+    # use maybe reduce?
     transactions_array.each do |transaction|
       total += transaction.amount
     end

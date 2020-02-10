@@ -1,71 +1,73 @@
-<p>
-  <a href="/transactions/new">New transaction</a>
-</p>
+<div class="index">
+  <p>
+    <a href="/transactions/new">New transaction</a>
+  </p>
 
-<form action="/transactions/merchant" method="post">
-  <label>
-  Filter by merchant:
-    <select name="merchant_id" required>
-    <option style="display:none">
-      <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+  <form action="/transactions/merchant" method="post">
+    <label>
+    Filter by merchant:
+      <select name="merchant_id" required>
+      <option disabled selected>Select a merchant!</option>
+        <% for merchant in @merchants %>
+        <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
 
-  <input type='submit' value="Filter">
-</form>
+    <input type='submit' value="Filter">
+  </form>
 
-<form action="/transactions/tag" method="post">
-  <label>
-  Filter by tag:
-    <select name="tag_id" required>
+  <form action="/transactions/tag" method="post">
+    <label>
+    Filter by tag:
+      <select name="tag_id" required>
+        <option style="display:none">
+        <% for tag in @tags %>
+        <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
+
+    <input type='submit' value="Filter">
+  </form>
+
+  <form action="/transactions/month" method="post">
+    <label>
+    Filter by month:
+
+    <select name="month" required>
+
       <option style="display:none">
-      <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+      <option value="01">January</option>
+      <option value="02">February</option>
+      <option value="03">March</option>
+      <option value="04">April</option>
+      <option value="05">May</option>
+      <option value="06">June</option>
+      <option value="07">July</option>
+      <option value="08">August</option>
+      <option value="09">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
 
-  <input type='submit' value="Filter">
-</form>
+    <input type='submit' value="Filter">
+  </form>
 
-<form action="/transactions/month" method="post">
-  <label>
-  Filter by month:
+  <p>All transactions for <%= @filter %></p>
 
-  <select name="month" required>
+  <% @transactions.each do |transaction| %>
+    <ul>
+      <a href="/transactions/<%= transaction.id %>">
+        <li><%= transaction.amount %></li>
+        <li><%= transaction.merchant.name.capitalize %></li>
+        <li><%= transaction.tag.name.capitalize %></li>
+        <li><%= transaction.day %></li>
+        <li><%= transaction.month %></li>
+      </a>
+    </ul>
 
-    <option style="display:none">
-    <option value="01">January</option>
-    <option value="02">February</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
+  <% end %>
 
-  <input type='submit' value="Filter">
-</form>
-
-<p>All transactions for <%= @filter %></p>
-
-<% @transactions.each do |transaction| %>
-  <ul>
-    <a href="/transactions/<%= transaction.id %>">
-      <li><%= transaction.amount %></li>
-      <li><%= transaction.merchant.name.capitalize %></li>
-      <li><%= transaction.tag.name.capitalize %></li>
-      <li><%= transaction.day %></li>
-      <li><%= transaction.month %></li>
-    </a>
-  </ul>
-
-<% end %>
-
-<p> Total: <%= @total %></p>
+  <p> Total: <%= @total %></p>
+</div>

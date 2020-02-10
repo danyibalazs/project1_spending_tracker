@@ -1,12 +1,18 @@
 <div class="index">
   <p>
-    <a href="/tags/new">New tag</a>
+    <a href="/tags/new">Add tag</a>
   </p>
+
+<div class="list">
+
 
   <ul>
   <% @tags.each do |tag| %>
 
-      <a href="/tags/<%= tag.id  %>"><li><%= tag.name.capitalize %></li></a>
+      <li><a href="/tags/<%= tag.id  %>"><%= tag.name.capitalize %></a></li>
   <% end %>
   </ul>
+
+  </div>
+
 </div>

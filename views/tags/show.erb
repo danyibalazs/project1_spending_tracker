@@ -1,7 +1,13 @@
+<div class="index">
+  <p>
+    <a href="/tags/<%= @tag.id %>/edit">Rename</a>
+  </p>
+</div>
+
 <h1> <%= @tag.name.capitalize %> </h1>
 
 <form action="/tags/<%= @tag.id  %>/delete" method="post">
-    <input type='submit' value="Delete">
+    <input class="delete" type='submit' value="Delete">
 </form>
 
-<a href="/tags/<%= @tag.id %>/edit">Rename</a>
+<p>Warning! This will delete all the transactions with <%= @tag.name.capitalize %> attached to it!</p>
