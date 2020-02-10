@@ -1,7 +1,6 @@
 DROP TABLE transactions;
 DROP TABLE tags;
 DROP TABLE merchants;
-DROP TABLE users;
 
 CREATE TABLE merchants(
   id SERIAL PRIMARY KEY,
@@ -11,12 +10,6 @@ CREATE TABLE merchants(
 CREATE TABLE tags(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) not null
-);
-
-CREATE TABLE users(
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) not null,
-  budget INT
 );
 
 CREATE TABLE transactions(

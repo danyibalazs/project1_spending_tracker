@@ -3,7 +3,6 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/transaction' )
 require_relative( '../models/merchant' )
 require_relative( '../models/tag' )
-require_relative( '../models/user' )
 also_reload( '../models/*' )
 
 get '/transactions' do
@@ -13,9 +12,6 @@ get '/transactions' do
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
-  user = User.all()
-  @budget =  user[0].budget
-  @remaining_money = @budget - @total
   erb ( :"transactions/index" )
 end
 
