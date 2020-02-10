@@ -3,13 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Spending Tracker</title>
+    <link rel="stylesheet" type="text/css" href="/styles/structure.css">
   </head>
   <body>
-    <ul>
-      <a href="/transactions"><li>Transactions</li></a>
-      <a href="/merchants"><li>Merchants</li></a>
-      <a href="/tags"><li>Tags</li></a>
-    </ul>
+    <header>
+      <img src="https://smartmoneystar.com/wp-content/uploads/2017/09/header.jpg" alt="">
+    </header>
+
+
+      <ul class="nav">
+        <li class="nav"><a href="/transactions">Transactions</a></li>
+        <li class="nav"><a href="/merchants">Merchants</a></li>
+        <li class="nav"><a href="/tags">Tags</a></li>
+      </ul>
+  
+
+
     <%= yield %>
   </body>
 </html>
