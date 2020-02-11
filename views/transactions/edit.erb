@@ -15,6 +15,7 @@
      </select>
 
   <label>
+    Select a tag:
     <select name="tag_id">
          <% @tags.each do |tag| %>
            <% if tag.id == @transaction.tag_id %>
@@ -29,6 +30,11 @@
   <label>
     Amount:
   <input type="number" name="amount" value="<%= @transaction.amount %>">
+  </label>
+
+  <label>
+    Select transaction date:
+    <input type="date" name="transaction_date" value="<%= @transaction.transaction_date %>">
   </label>
 
   <input type='submit' value="Edit transaction">

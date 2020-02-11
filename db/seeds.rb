@@ -31,8 +31,7 @@ transaction1 = Transaction.new({
   "merchant_id" => merchant1.id,
   "tag_id" => tag1.id,
   "amount" => 100,
-  "day" => Time.now.strftime("%d"),
-  "month" => Time.now.strftime("%m")
+  "transaction_date" => "2000-01-01"
 
   })
 transaction1.save()
@@ -41,8 +40,8 @@ transaction2 = Transaction.new({
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id,
   "amount" => 50,
-  "day" => Time.now.strftime("%d"),
-  "month" => Time.now.strftime("%m")
+  "transaction_date" => "2002-01-01"
+
   })
 transaction2.save()
 
@@ -50,8 +49,8 @@ transaction3 = Transaction.new({
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id,
   "amount" => 200,
-  "day" => Time.now.strftime("%d"),
-  "month" => Time.now.strftime("%m")
+  "transaction_date" => "2004-01-01"
+
   })
 transaction3.save()
 
@@ -59,16 +58,14 @@ future_transaction = Transaction.new({
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id,
   "amount" => 1000,
-  "day" => "15",
-  "month" => "03"
+  "transaction_date" => "2005-01-01"
   })
 future_transaction.save()
 future_transaction2 = Transaction.new({
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id,
   "amount" => 2000,
-  "day" => "20",
-  "month" => "05"
+  "transaction_date" => "2002-01-01"
   })
 future_transaction2.save()
 

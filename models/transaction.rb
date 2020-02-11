@@ -1,6 +1,7 @@
 require_relative( '../db/sql_runner' )
 require_relative( './merchant' )
 require_relative( './tag' )
+require("date")
 
 class Transaction
 
@@ -26,7 +27,7 @@ class Transaction
 
   def update()
     sql = "UPDATE transactions
-    SET (merchant_id, tag_id, amount, transaction_datr) = ($1, $2, $3, $4)
+    SET (merchant_id, tag_id, amount, transaction_date) = ($1, $2, $3, $4)
     WHERE id = $5"
     values = [@merchant_id, @tag_id, @amount, @transaction_date, @id]
     SqlRunner.run(sql, values)
@@ -48,12 +49,30 @@ class Transaction
     return tag
   end
 
+  # def get_transaction_month()
+  #   sql = "SELECT EXTRACT(MONTH FROM transaction_date) FROM transactions WHERE id = $1"
+  #   value = [@id]
+  #   return SqlRunner.run(sql, value)
+  # end
+
+  def self.filter_by_date_range(start_date, end_date)
+    start_date = Date.parse(start_date)
+    end_date = Date.parse(end_date)
+    transactions = self.all()
+    filtered_transactions = transactions.select do |transaction|
+      transaction_date = Date.parse(transaction.transaction_date)
+      start_date < transaction_date && end_date > transaction_date
+    end
+    return filtered_transactions
+  end
+
   def self.filter_by_merchant(merchant_id)
     sql = "SELECT * FROM transactions
     WHERE merchant_id = $1"
     value = [merchant_id]
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
+    self.sort_by_date(transactions)
     return transactions
   end
 
@@ -63,22 +82,24 @@ class Transaction
     value = [tag_id]
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
+    self.sort_by_date(transactions)
     return transactions
   end
 
-  # def self.filter_by_month(month)
-  #   sql = "SELECT * FROM transactions
-  #   WHERE month = $1"
-  #   value = [month]
-  #   results = SqlRunner.run(sql, value)
-  #   transactions = results.map {|transaction| Transaction.new(transaction)}
-  #   return transactions
-  # end
+  def self.sort_by_date(transactions)
+    transactions.sort_by! {
+      |transaction|
+      Date.parse(transaction.transaction_date())
+    }
+    transactions.reverse!
+    return transactions
+  end
 
   def self.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
     transactions = results.map {|transaction| Transaction.new(transaction)}
+    self.sort_by_date(transactions)
     return transactions
   end
 

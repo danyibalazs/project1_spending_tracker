@@ -7,42 +7,37 @@ also_reload( '../models/*' )
 
 get '/transactions' do
   @transactions = Transaction.all()
-  # @transactions.sort_by!{|hash| hash.month}
-  @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
   erb ( :"transactions/index" )
 end
 
-post '/transactions/merchant' do
+post '/transactions/filter-by-merchant' do
   @filter = Merchant.find(params["merchant_id"]).name()
   @transactions = Transaction.filter_by_merchant(params["merchant_id"])
-  @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
   erb ( :"transactions/index" )
 end
 
-post '/transactions/tag' do
+post '/transactions/filter-by-tag' do
   @filter = Tag.find(params["tag_id"]).name()
   @transactions = Transaction.filter_by_tag(params["tag_id"])
-  @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
   erb ( :"transactions/index" )
 end
 
-# post '/transactions/month' do
-#   @transactions = Transaction.filter_by_month(params["month"])
-#   @transactions.reverse!
-#   @total = Transaction.total_amounts(@transactions)
-#   @merchants = Merchant.all
-#   @tags = Tag.all
-#   erb ( :"transactions/index" )
-# end
+post '/transactions/filter-by-date' do
+  @transactions = Transaction.filter_by_date_range(params[:transaction_date])
+  @total = Transaction.total_amounts(@transactions)
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb ( :"transactions/index" )
+end
 
 get '/transactions/new' do
   @merchants = Merchant.all()
