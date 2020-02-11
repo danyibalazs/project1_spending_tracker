@@ -7,7 +7,7 @@ also_reload( '../models/*' )
 
 get '/transactions' do
   @transactions = Transaction.all()
-  @transactions.sort_by!{|hash| hash.month}
+  # @transactions.sort_by!{|hash| hash.month}
   @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
@@ -35,14 +35,14 @@ post '/transactions/tag' do
   erb ( :"transactions/index" )
 end
 
-post '/transactions/month' do
-  @transactions = Transaction.filter_by_month(params["month"])
-  @transactions.reverse!
-  @total = Transaction.total_amounts(@transactions)
-  @merchants = Merchant.all
-  @tags = Tag.all
-  erb ( :"transactions/index" )
-end
+# post '/transactions/month' do
+#   @transactions = Transaction.filter_by_month(params["month"])
+#   @transactions.reverse!
+#   @total = Transaction.total_amounts(@transactions)
+#   @merchants = Merchant.all
+#   @tags = Tag.all
+#   erb ( :"transactions/index" )
+# end
 
 get '/transactions/new' do
   @merchants = Merchant.all()
@@ -51,8 +51,6 @@ get '/transactions/new' do
 end
 
 post '/transactions' do
-  params["day"] = Time.now.strftime("%d")
-  params["month"] = Time.now.strftime("%m")
   transaction = Transaction.new(params)
   transaction.save
   redirect("/transactions")
@@ -77,8 +75,6 @@ get '/transactions/:id/edit' do
 end
 
 post '/transactions/:id' do
-  params["day"] = Time.now.strftime("%d")
-  params["month"] = Time.now.strftime("%m")
   transaction = Transaction.new(params)
   transaction.update()
   redirect("/transactions")

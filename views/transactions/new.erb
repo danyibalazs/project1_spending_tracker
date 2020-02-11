@@ -5,7 +5,7 @@
   <label>
   Select a merchant:
     <select required name="merchant_id">
-      <option disabled selected>Select a merchant!</option>
+      <option></option>
       <% for merchant in @merchants %>
       <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
       <% end %>
@@ -15,7 +15,7 @@
   <label>
     Select a tag:
     <select required name="tag_id">
-      <option disabled selected>Select a tag!</option>
+      <option></option>
       <% for tag in @tags %>
       <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
       <% end %>
@@ -24,10 +24,15 @@
 
   <label>
     Amount:
-  <input required type="number" name="amount" placeholder="Add the amount!">
+  <input required type="number" name="amount">
   </label>
 
-  <input type='submit' value="New transaction" placeholder="Amount">
+  <label>
+    Select transaction date:
+    <input type="date" name="transaction_date" value="">
+  </label>
+
+  <input type='submit' value="New transaction" >
 </form>
 
 </div>

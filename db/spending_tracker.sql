@@ -17,7 +17,5 @@ CREATE TABLE transactions(
   merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE,
   tag_id INT REFERENCES tags(id) ON DELETE CASCADE,
   amount FLOAT,
-  -- transaction_date DATE,
-  day VARCHAR(255),
-  month VARCHAR(255)
-)
+  transaction_date DATE
+);

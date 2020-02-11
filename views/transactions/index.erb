@@ -11,7 +11,7 @@
     <label>
     Filter by merchant:
       <select name="merchant_id" required>
-      <option disabled selected>Select a merchant!</option>
+
         <% for merchant in @merchants %>
         <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
         <% end %>
@@ -25,7 +25,7 @@
     <label>
     Filter by tag:
       <select name="tag_id" required>
-        <option disabled selected>Select a tag!</option>
+
         <% for tag in @tags %>
         <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
         <% end %>
@@ -41,7 +41,7 @@
 
     <select name="month" required>
 
-      <option disabled selected>Select a month!</option>
+
       <option value="01">January</option>
       <option value="02">February</option>
       <option value="03">March</option>
@@ -77,7 +77,7 @@
       <td><%= transaction.merchant.name.capitalize %></td>
       <td><%= transaction.tag.name.capitalize %></td>
       <td>£<%= transaction.amount %></td>
-      <td><%= transaction.day %> / <%= transaction.month %></td>
+      <td><%= transaction.transaction_date %></td>
     </tr>
 
     <% end %>

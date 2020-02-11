@@ -8,5 +8,9 @@ require_relative('controllers/tags_controller')
 # In erb, use <%= settings.budget %>
 
 get '/' do
+  @transactions = Transaction.all()
+  @total = Transaction.total_amounts(@transactions)
+  # @merchants = Merchant.all()
+  # @tags = Tag.all()
   erb( :index )
 end
