@@ -4,9 +4,16 @@
     <a class="myButton" href="/transactions/<%= @transaction.id %>/edit">Edit</a>
   </p>
 
-  <li><%= @transaction.amount %></li>
-  <li><%= @transaction.merchant.name.capitalize %></li>
-  <li><%= @transaction.tag.name.capitalize %></li>
+  <div class="table2">
+
+
+  <table>
+    <td><%= @transaction.merchant.name.capitalize %></td>
+    <td><%= @transaction.tag.name.capitalize %></td>
+    <td>£<%= @transaction.amount %></td>
+  </table>
+
+  </div>
 
   <form action="/transactions/<%= @transaction.id  %>/delete" method="post">
       <input class="delete" type='submit' value="Delete">

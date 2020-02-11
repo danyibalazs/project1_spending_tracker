@@ -26,6 +26,7 @@ post '/transactions/merchant' do
 end
 
 post '/transactions/tag' do
+  @filter = Tag.find(params["tag_id"]).name()
   @transactions = Transaction.filter_by_tag(params["tag_id"])
   @transactions.reverse!
   @total = Transaction.total_amounts(@transactions)

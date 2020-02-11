@@ -103,15 +103,15 @@ h1, p {
    margin-left: 10%;
 }
 
-.tables table {
+.tables table, .table2 table {
   font-family: Times;
   border-collapse: collapse;
   width: 100%;
 }
 
-.tables td, th {
+.tables td, th, .table2 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
@@ -123,4 +123,10 @@ h1, p {
 .tables p {
   font-weight: bold;
   font-size: 1.5em;
+}
+
+.table2 {
+  text-align: center;
+  margin: 0 auto;
+  margin: 14px;
 }

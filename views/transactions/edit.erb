@@ -1,3 +1,6 @@
+<div class="small-form">
+
+
 <form action="/transactions/<%= @transaction.id %>" method="post">
   <label>
   Select a merchant:
@@ -25,8 +28,11 @@
 
   <label>
     Amount:
-  <input type="number" name="amount">
+  <input type="number" name="amount" value="<%= @transaction.amount %>">
   </label>
 
   <input type='submit' value="Edit transaction">
 </form>
+
+
+</div>
