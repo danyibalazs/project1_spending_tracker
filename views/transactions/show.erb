@@ -9,7 +9,7 @@
   <table>
     <td><%= @transaction.merchant.name.capitalize %></td>
     <td><%= @transaction.tag.name.capitalize %></td>
-    <td>£<%= @transaction.amount %></td>
+    <td>£<%= sprintf("%.2f", @transaction.amount) %></td>
     <td><%= @transaction.transaction_date %></td>
   </table>
 

@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+  height: 100%;
+}
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#home {
+  opacity: 0.2;
+  height: 100%;
+}

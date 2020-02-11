@@ -29,7 +29,7 @@
 
     <label>
       Amount:
-    <input type="number" name="amount" value="<%= @transaction.amount %>">
+    <input type="number" name="amount" value="<%= sprintf("%.2f", @transaction.amount) %>">
     </label>
 
     <label>
