@@ -1,38 +1,37 @@
 <div class="small-form">
 
+  <form action="/transactions" method="post">
+    <label>
+    Select a merchant:
+      <select required name="merchant_id">
+        <option></option>
+        <% for merchant in @merchants %>
+        <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
 
-<form action="/transactions" method="post">
-  <label>
-  Select a merchant:
-    <select required name="merchant_id">
-      <option></option>
-      <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+    <label>
+      Select a tag:
+      <select required name="tag_id">
+        <option></option>
+        <% for tag in @tags %>
+        <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
 
-  <label>
-    Select a tag:
-    <select required name="tag_id">
-      <option></option>
-      <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+    <label>
+      Amount:
+    <input required type="number" name="amount">
+    </label>
 
-  <label>
-    Amount:
-  <input required type="number" name="amount">
-  </label>
+    <label>
+      Select transaction date:
+      <input type="date" name="transaction_date" value="">
+    </label>
 
-  <label>
-    Select transaction date:
-    <input type="date" name="transaction_date" value="">
-  </label>
-
-  <input type='submit' value="New transaction" >
-</form>
+    <input type='submit' value="New transaction" >
+  </form>
 
 </div>

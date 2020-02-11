@@ -3,7 +3,6 @@ body {
   padding: 0;
 }
 
-
 ul.nav {
   list-style-type: none;
   margin: 0;
@@ -15,7 +14,7 @@ ul.nav {
   top: 0;
 }
 
- .nav li {
+.nav li {
   float: left;
 }
 

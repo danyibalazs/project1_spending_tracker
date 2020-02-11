@@ -49,6 +49,15 @@ class Transaction
     return tag
   end
 
+  def self.sort_by_date(transactions)
+    transactions.sort_by! {
+      |transaction|
+      Date.parse(transaction.transaction_date())
+    }
+    transactions.reverse!
+    return transactions
+  end
+
   def self.filter_by_date_range(start_date, end_date)
     start_date = Date.parse(start_date)
     end_date = Date.parse(end_date)
@@ -77,15 +86,6 @@ class Transaction
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
     self.sort_by_date(transactions)
-    return transactions
-  end
-
-  def self.sort_by_date(transactions)
-    transactions.sort_by! {
-      |transaction|
-      Date.parse(transaction.transaction_date())
-    }
-    transactions.reverse!
     return transactions
   end
 

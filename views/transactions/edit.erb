@@ -1,44 +1,43 @@
 <div class="small-form">
 
 
-<form action="/transactions/<%= @transaction.id %>" method="post">
-  <label>
-  Select a merchant:
-  <select name="merchant_id">
-       <% @merchants.each do |merchant| %>
-         <% if merchant.id == @transaction.merchant_id %>
-           <option value=<%= merchant.id %> selected><%= merchant.name.capitalize %></option>
-         <% else %>
-           <option value=<%= merchant.id %>><%= merchant.name.capitalize %></option>
-         <% end %>
-       <% end %>
-     </select>
-
-  <label>
-    Select a tag:
-    <select name="tag_id">
-         <% @tags.each do |tag| %>
-           <% if tag.id == @transaction.tag_id %>
-             <option value=<%= tag.id %> selected><%= tag.name.capitalize %></option>
+  <form action="/transactions/<%= @transaction.id %>" method="post">
+    <label>
+    Select a merchant:
+    <select name="merchant_id">
+         <% @merchants.each do |merchant| %>
+           <% if merchant.id == @transaction.merchant_id %>
+             <option value=<%= merchant.id %> selected><%= merchant.name.capitalize %></option>
            <% else %>
-             <option value=<%= tag.id %>><%= tag.name.capitalize %></option>
+             <option value=<%= merchant.id %>><%= merchant.name.capitalize %></option>
            <% end %>
          <% end %>
        </select>
-  </label>
 
-  <label>
-    Amount:
-  <input type="number" name="amount" value="<%= @transaction.amount %>">
-  </label>
+    <label>
+      Select a tag:
+      <select name="tag_id">
+           <% @tags.each do |tag| %>
+             <% if tag.id == @transaction.tag_id %>
+               <option value=<%= tag.id %> selected><%= tag.name.capitalize %></option>
+             <% else %>
+               <option value=<%= tag.id %>><%= tag.name.capitalize %></option>
+             <% end %>
+           <% end %>
+         </select>
+    </label>
 
-  <label>
-    Select transaction date:
-    <input type="date" name="transaction_date" value="<%= @transaction.transaction_date %>">
-  </label>
+    <label>
+      Amount:
+    <input type="number" name="amount" value="<%= @transaction.amount %>">
+    </label>
 
-  <input type='submit' value="Edit transaction">
-</form>
+    <label>
+      Select transaction date:
+      <input type="date" name="transaction_date" value="<%= @transaction.transaction_date %>">
+    </label>
 
+    <input type='submit' value="Edit transaction">
+  </form>
 
 </div>
