@@ -77,7 +77,6 @@ h1, p {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family: Times;
 	font-size:13px;
 	font-weight:bold;
 	padding:6px 12px;
@@ -104,7 +103,6 @@ h1, p {
 }
 
 .tables table, .table2 table {
-  font-family: Times;
   border-collapse: collapse;
   width: 100%;
 }

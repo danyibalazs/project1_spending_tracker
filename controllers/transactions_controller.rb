@@ -32,6 +32,7 @@ post '/transactions/filter-by-tag' do
 end
 
 post '/transactions/filter-by-date-range' do
+  @filter = 'from ' + params['start_date'].to_s + ' to ' + params["end_date"].to_s
   @transactions = Transaction.filter_by_date_range(params["start_date"], params["end_date"])
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all

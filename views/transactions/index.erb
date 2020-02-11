@@ -34,7 +34,7 @@
   </form>
 
   <form action="/transactions/filter-by-date-range" method="post">
-    <label>Filter by date range</label>
+    <label>Filter by date range:</label>
 
       <input required type="date" name="start_date" value="">
       <label>Start Date</label>
@@ -48,7 +48,7 @@
 
 <div class="tables">
 
-  <p>All <%= @filter %> transactions </p>
+  <p>All transactions: <%= @filter %></p>
   <p> Total: £<%= sprintf("%.2f", @total) %></p>
 
   <table>
