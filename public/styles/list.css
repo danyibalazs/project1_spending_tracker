@@ -94,3 +94,33 @@ h1, p {
 	position:relative;
 	top:1px;
 }
+
+.tables {
+   float: left;
+   text-align: center;
+   margin: 0 auto;
+   width: 60%;
+   margin-left: 10%;
+}
+
+.tables table {
+  font-family: Times;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tables td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.tables .link:hover {
+  background-color: #f2f2f2;
+  cursor: grab;
+}
+
+.tables p {
+  font-weight: bold;
+  font-size: 1.5em;
+}

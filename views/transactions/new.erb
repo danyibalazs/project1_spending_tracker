@@ -1,7 +1,11 @@
+<div class="small-form">
+
+
 <form action="/transactions" method="post">
   <label>
   Select a merchant:
-    <select name="merchant_id">
+    <select required name="merchant_id">
+      <option disabled selected>Select a merchant!</option>
       <% for merchant in @merchants %>
       <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
       <% end %>
@@ -10,7 +14,8 @@
 
   <label>
     Select a tag:
-    <select name="tag_id">
+    <select required name="tag_id">
+      <option disabled selected>Select a tag!</option>
       <% for tag in @tags %>
       <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
       <% end %>
@@ -19,8 +24,10 @@
 
   <label>
     Amount:
-  <input type="number" name="amount">
+  <input required type="number" name="amount" placeholder="Add the amount!">
   </label>
 
-  <input type='submit' value="New transaction">
+  <input type='submit' value="New transaction" placeholder="Amount">
 </form>
+
+</div>

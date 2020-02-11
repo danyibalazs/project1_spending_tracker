@@ -1,9 +1,15 @@
-<li><%= @transaction.amount %></li>
-<li><%= @transaction.merchant.name.capitalize %></li>
-<li><%= @transaction.tag.name.capitalize %></li>
 
-<form action="/transactions/<%= @transaction.id  %>/delete" method="post">
-    <input type='submit' value="Delete">
-</form>
+<div class="index">
+  <p>
+    <a class="myButton" href="/transactions/<%= @transaction.id %>/edit">Edit</a>
+  </p>
 
-<a href="/transactions/<%= @transaction.id %>/edit">Edit</a>
+  <li><%= @transaction.amount %></li>
+  <li><%= @transaction.merchant.name.capitalize %></li>
+  <li><%= @transaction.tag.name.capitalize %></li>
+
+  <form action="/transactions/<%= @transaction.id  %>/delete" method="post">
+      <input class="delete" type='submit' value="Delete">
+  </form>
+
+</div>

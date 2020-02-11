@@ -1,9 +1,12 @@
 <div class="index">
   <p>
-    <a href="/transactions/new">New transaction</a>
+    <a class="myButton" href="/transactions/new">New transaction</a>
   </p>
 </div>
 
+
+
+<div class= "big-form">
   <form action="/transactions/merchant" method="post">
     <label>
     Filter by merchant:
@@ -22,7 +25,7 @@
     <label>
     Filter by tag:
       <select name="tag_id" required>
-        <option style="display:none">
+        <option disabled selected>Select a tag!</option>
         <% for tag in @tags %>
         <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
         <% end %>
@@ -38,7 +41,7 @@
 
     <select name="month" required>
 
-      <option style="display:none">
+      <option disabled selected>Select a month!</option>
       <option value="01">January</option>
       <option value="02">February</option>
       <option value="03">March</option>
@@ -54,21 +57,30 @@
 
     <input type='submit' value="Filter">
   </form>
+  </div>
 
-  <p>All transactions for <%= @filter %></p>
+<div class="tables">
 
-  <% @transactions.each do |transaction| %>
-    <ul>
-      <a href="/transactions/<%= transaction.id %>">
-        <li><%= transaction.amount %></li>
-        <li><%= transaction.merchant.name.capitalize %></li>
-        <li><%= transaction.tag.name.capitalize %></li>
-        <li><%= transaction.day %></li>
-        <li><%= transaction.month %></li>
-      </a>
-    </ul>
 
-  <% end %>
+  <p>All transactions</p>
+  <p> Total: £<%= @total %></p>
 
-  <p> Total: <%= @total %></p>
+  <table>
+    <tr>
+      <th>Merchant</th>
+      <th>Tag</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+    <% @transactions.each do |transaction| %>
+    <tr class="link" onclick="window.location='/transactions/<%= transaction.id %>'">
+      <td><%= transaction.merchant.name.capitalize %></td>
+      <td><%= transaction.tag.name.capitalize %></td>
+      <td>£<%= transaction.amount %></td>
+      <td><%= transaction.day %> / <%= transaction.month %></td>
+    </tr>
+
+    <% end %>
+  </table>
+
 </div>
