@@ -49,12 +49,6 @@ class Transaction
     return tag
   end
 
-  # def get_transaction_month()
-  #   sql = "SELECT EXTRACT(MONTH FROM transaction_date) FROM transactions WHERE id = $1"
-  #   value = [@id]
-  #   return SqlRunner.run(sql, value)
-  # end
-
   def self.filter_by_date_range(start_date, end_date)
     start_date = Date.parse(start_date)
     end_date = Date.parse(end_date)
@@ -63,6 +57,7 @@ class Transaction
       transaction_date = Date.parse(transaction.transaction_date)
       start_date < transaction_date && end_date > transaction_date
     end
+    self.sort_by_date(filtered_transactions)
     return filtered_transactions
   end
 
@@ -72,8 +67,7 @@ class Transaction
     value = [merchant_id]
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
-    self.sort_by_date(transactions)
-    return transactions
+    return self.sort_by_date(transactions)
   end
 
   def self.filter_by_tag(tag_id)

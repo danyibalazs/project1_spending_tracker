@@ -31,8 +31,8 @@ post '/transactions/filter-by-tag' do
   erb ( :"transactions/index" )
 end
 
-post '/transactions/filter-by-date' do
-  @transactions = Transaction.filter_by_date_range(params[:transaction_date])
+post '/transactions/filter-by-date-range' do
+  @transactions = Transaction.filter_by_date_range(params["start_date"], params["end_date"])
   @total = Transaction.total_amounts(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
