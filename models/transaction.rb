@@ -66,7 +66,6 @@ class Transaction
       transaction_date = Date.parse(transaction.transaction_date)
       start_date < transaction_date && end_date > transaction_date
     end
-    self.sort_by_date(filtered_transactions)
     return filtered_transactions
   end
 
@@ -85,8 +84,7 @@ class Transaction
     value = [tag_id]
     results = SqlRunner.run(sql, value)
     transactions = results.map {|transaction| Transaction.new(transaction)}
-    self.sort_by_date(transactions)
-    return transactions
+    return self.sort_by_date(transactions)
   end
 
   def self.all()

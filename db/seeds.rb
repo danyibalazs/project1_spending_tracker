@@ -42,7 +42,6 @@ transaction1 = Transaction.new({
   "tag_id" => tag1.id,
   "amount" => 100,
   "transaction_date" => "2020-02-10"
-
   })
 transaction1.save()
 
@@ -51,7 +50,6 @@ transaction2 = Transaction.new({
   "tag_id" => tag3.id,
   "amount" => 30,
   "transaction_date" => "2019-12-20"
-
   })
 transaction2.save()
 
@@ -60,7 +58,6 @@ transaction3 = Transaction.new({
   "tag_id" => tag2.id,
   "amount" => 50,
   "transaction_date" => "2020-01-15"
-
   })
 transaction3.save()
 
