@@ -1,4 +1,3 @@
-# require("pry-byebug")
 require_relative("../models/merchant")
 require_relative("../models/tag")
 require_relative("../models/transaction")
@@ -61,5 +60,4 @@ transaction3 = Transaction.new({
   })
 transaction3.save()
 
-# binding.pry
-# nil
+
